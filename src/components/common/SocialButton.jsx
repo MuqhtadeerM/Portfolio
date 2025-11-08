@@ -1,10 +1,10 @@
-import React from "react";
-
-const SocialButton = ({ icon: Icon, href, label, variant = "light" }) => {
+import React from 'react'
+// eslint-disable-next-line no-unused-vars
+const SocialButton = ({ icon: Icon, href, label, variant = 'light' }) => {
   const variants = {
-    light: "bg-white text-gray-700 hover:shadow-xl",
-    dark: "bg-gray-800 text-white hover:bg-gray-700",
-  };
+    light: 'bg-white text-gray-700 hover:shadow-xl',
+    dark: 'bg-gray-800 text-white hover:bg-gray-700',
+  }
 
   return (
     <a
@@ -16,7 +16,7 @@ const SocialButton = ({ icon: Icon, href, label, variant = "light" }) => {
     >
       <Icon size={20} />
     </a>
-  );
-};
+  )
+}
 
-export default SocialButton;
+export default SocialButton

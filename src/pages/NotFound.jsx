@@ -1,6 +1,6 @@
-import React from "react";
-import { Home } from "lucide-react";
-import Button from "../components/common/Button";
+import React from 'react'
+import { Home } from 'lucide-react'
+import Button from '../components/common/Button'
 
 const NotFound = () => {
   return (
@@ -20,7 +20,7 @@ const NotFound = () => {
         </Button>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default NotFound;
+export default NotFound

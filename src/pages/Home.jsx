@@ -1,5 +1,5 @@
-import Hero from "../components/sections/Hero";
-import Skills from "../components/sections/Skills";
+import Hero from '../components/sections/Hero'
+import Skills from '../components/sections/Skills'
 
 const Home = () => {
   return (
@@ -7,7 +7,7 @@ const Home = () => {
       <Hero />
       <Skills />
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

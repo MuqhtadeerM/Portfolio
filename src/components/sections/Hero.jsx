@@ -1,14 +1,14 @@
-import React from "react";
-import { Github, Linkedin, Mail, ArrowDown } from "lucide-react";
-import Button from "../common/Button";
-import SocialButton from "../common/SocialButton";
+import React from 'react'
+import { Github, Linkedin, Mail, ArrowDown } from 'lucide-react'
+import Button from '../common/Button'
+import SocialButton from '../common/SocialButton'
 
 const Hero = () => {
   const socialLinks = [
-    { icon: Github, href: "https://github.com", label: "GitHub" },
-    { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-    { icon: Mail, href: "mailto:your@email.com", label: "Email" },
-  ];
+    { icon: Github, href: 'https://github.com', label: 'GitHub' },
+    { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
+    { icon: Mail, href: 'mailto:your@email.com', label: 'Email' },
+  ]
 
   return (
     <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50 pt-20">
@@ -66,7 +66,7 @@ const Hero = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Hero;
+export default Hero

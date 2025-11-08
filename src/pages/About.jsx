@@ -1,33 +1,33 @@
-import React from "react";
-import { Award, Briefcase, GraduationCap } from "lucide-react";
-import Card from "../components/common/Card";
+import React from 'react'
+import { Award, Briefcase, GraduationCap } from 'lucide-react'
+import Card from '../components/common/Card'
 
 const About = () => {
   const experiences = [
     {
       icon: Briefcase,
-      title: "Senior Frontend Developer",
-      company: "Tech Company Inc.",
-      period: "2022 - Present",
+      title: 'Senior Frontend Developer',
+      company: 'Tech Company Inc.',
+      period: '2022 - Present',
       description:
-        "Leading frontend development team and building scalable web applications.",
+        'Leading frontend development team and building scalable web applications.',
     },
     {
       icon: Briefcase,
-      title: "Full Stack Developer",
-      company: "Startup Solutions",
-      period: "2020 - 2022",
+      title: 'Full Stack Developer',
+      company: 'Startup Solutions',
+      period: '2020 - 2022',
       description:
-        "Developed full-stack applications using React, Node.js, and MongoDB.",
+        'Developed full-stack applications using React, Node.js, and MongoDB.',
     },
     {
       icon: GraduationCap,
-      title: "Computer Science Degree",
-      company: "University Name",
-      period: "2016 - 2020",
-      description: "Bachelor of Science in Computer Science with honors.",
+      title: 'Computer Science Degree',
+      company: 'University Name',
+      period: '2016 - 2020',
+      description: 'Bachelor of Science in Computer Science with honors.',
     },
-  ];
+  ]
 
   return (
     <div className="min-h-screen bg-gray-50 pt-24 pb-12">
@@ -77,12 +77,12 @@ const About = () => {
             <h2 className="text-3xl font-bold mb-6">What I Do</h2>
             <ul className="space-y-4">
               {[
-                "Build responsive web applications with React and modern JavaScript",
-                "Design and implement RESTful APIs and backend services",
-                "Create pixel-perfect UI implementations from design mockups",
-                "Optimize application performance and user experience",
-                "Collaborate with cross-functional teams using Agile methodologies",
-                "Mentor junior developers and conduct code reviews",
+                'Build responsive web applications with React and modern JavaScript',
+                'Design and implement RESTful APIs and backend services',
+                'Create pixel-perfect UI implementations from design mockups',
+                'Optimize application performance and user experience',
+                'Collaborate with cross-functional teams using Agile methodologies',
+                'Mentor junior developers and conduct code reviews',
               ].map((item, index) => (
                 <li key={index} className="flex items-start gap-3">
                   <span className="text-primary-600 font-bold text-xl">•</span>
@@ -100,7 +100,7 @@ const About = () => {
           </h2>
           <div className="space-y-6">
             {experiences.map((exp, index) => {
-              const Icon = exp.icon;
+              const Icon = exp.icon
               return (
                 <Card key={index} className="animate-slide-up">
                   <div className="flex items-start gap-4">
@@ -119,13 +119,13 @@ const About = () => {
                     </div>
                   </div>
                 </Card>
-              );
+              )
             })}
           </div>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default About;
+export default About

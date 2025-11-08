@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
-import ProjectCard from '../components/sections/ProjectCard';
-import { PROJECTS } from '../utils/constants';
+import React, { useState } from 'react'
+import ProjectCard from '../components/sections/ProjectCard'
+import { PROJECTS } from '../utils/constants'
 
 const Projects = () => {
-  const [filter, setFilter] = useState('all');
-  
-  const categories = ['all', 'web', 'mobile', 'design'];
-  
-  const filteredProjects = filter === 'all' 
-    ? PROJECTS 
-    : PROJECTS.filter(project => project.category === filter);
+  const [filter, setFilter] = useState('all')
+
+  const categories = ['all', 'web', 'mobile', 'design']
+
+  const filteredProjects =
+    filter === 'all'
+      ? PROJECTS
+      : PROJECTS.filter((project) => project.category === filter)
 
   return (
     <div className="min-h-screen bg-gray-50 pt-24 pb-12">
@@ -20,7 +21,8 @@ const Projects = () => {
             My Projects
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            A collection of projects I've worked on, showcasing my skills and experience
+            A collection of projects I've worked on, showcasing my skills and
+            experience
           </p>
         </div>
 
@@ -53,12 +55,14 @@ const Projects = () => {
         {/* Empty State */}
         {filteredProjects.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-gray-500 text-lg">No projects found in this category.</p>
+            <p className="text-gray-500 text-lg">
+              No projects found in this category.
+            </p>
           </div>
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Projects;
+export default Projects

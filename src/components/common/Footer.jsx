@@ -1,16 +1,16 @@
-import React from "react";
-import { Github, Linkedin, Twitter, Mail, Heart } from "lucide-react";
-import SocialButton from "./SocialButton";
+import React from 'react'
+import { Github, Linkedin, Twitter, Mail, Heart } from 'lucide-react'
+import SocialButton from './SocialButton'
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
+  const currentYear = new Date().getFullYear()
 
   const socialLinks = [
-    { icon: Github, href: "https://github.com", label: "GitHub" },
-    { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-    { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
-    { icon: Mail, href: "mailto:your@email.com", label: "Email" },
-  ];
+    { icon: Github, href: 'https://github.com', label: 'GitHub' },
+    { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
+    { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' },
+    { icon: Mail, href: 'mailto:your@email.com', label: 'Email' },
+  ]
 
   return (
     <footer className="bg-gray-900 text-white py-12">
@@ -30,7 +30,7 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              {["Home", "About", "Projects", "Contact"].map((link) => (
+              {['Home', 'About', 'Projects', 'Contact'].map((link) => (
                 <li key={link}>
                   <a
                     href={`/${link.toLowerCase()}`}
@@ -63,13 +63,13 @@ const Footer = () => {
         {/* Copyright */}
         <div className="border-t border-gray-800 pt-8 text-center">
           <p className="text-gray-400 flex items-center justify-center">
-            © {currentYear} Portfolio. Made with{" "}
+            © {currentYear} Portfolio. Made with{' '}
             <Heart size={16} className="mx-1 text-red-500" /> by Your Name
           </p>
         </div>
       </div>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

@@ -1,7 +1,7 @@
-import React from "react";
-import { ExternalLink, Github } from "lucide-react";
-import Card from "../common/Card";
-import Button from "../common/Button";
+import React from 'react'
+import { ExternalLink, Github } from 'lucide-react'
+import Card from '../common/Card'
+import Button from '../common/Button'
 
 const ProjectCard = ({ project }) => {
   return (
@@ -49,7 +49,7 @@ const ProjectCard = ({ project }) => {
         </Button>
       </div>
     </Card>
-  );
-};
+  )
+}
 
-export default ProjectCard;
+export default ProjectCard

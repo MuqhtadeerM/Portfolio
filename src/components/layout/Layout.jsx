@@ -1,6 +1,6 @@
-import React from "react";
-import Header from "../common/Header";
-import Footer from "../common/Footer";
+import React from 'react'
+import Header from '../common/Header'
+import Footer from '../common/Footer'
 
 const Layout = ({ children }) => {
   return (
@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
       <main className="flex-grow">{children}</main>
       <Footer />
     </div>
-  );
-};
+  )
+}
 
-export default Layout;
+export default Layout

@@ -1,40 +1,40 @@
-import React from "react";
-import { Code, Palette, Database, Globe, Smartphone, Zap } from "lucide-react";
-import Card from "../common/Card";
+import React from 'react'
+import { Code, Palette, Database, Globe, Smartphone, Zap } from 'lucide-react'
+import Card from '../common/Card'
 
 const Skills = () => {
   const skillCategories = [
     {
       icon: Code,
-      title: "Frontend Development",
-      skills: ["React", "JavaScript", "TypeScript", "HTML/CSS", "Tailwind CSS"],
-      color: "from-blue-500 to-blue-600",
+      title: 'Frontend Development',
+      skills: ['React', 'JavaScript', 'TypeScript', 'HTML/CSS', 'Tailwind CSS'],
+      color: 'from-blue-500 to-blue-600',
     },
     {
       icon: Database,
-      title: "Backend Development",
-      skills: ["Node.js", "Express", "MongoDB", "PostgreSQL", "REST APIs"],
-      color: "from-green-500 to-green-600",
+      title: 'Backend Development',
+      skills: ['Node.js', 'Express', 'MongoDB', 'PostgreSQL', 'REST APIs'],
+      color: 'from-green-500 to-green-600',
     },
     {
       icon: Palette,
-      title: "UI/UX Design",
+      title: 'UI/UX Design',
       skills: [
-        "Figma",
-        "Adobe XD",
-        "Responsive Design",
-        "Wireframing",
-        "Prototyping",
+        'Figma',
+        'Adobe XD',
+        'Responsive Design',
+        'Wireframing',
+        'Prototyping',
       ],
-      color: "from-purple-500 to-purple-600",
+      color: 'from-purple-500 to-purple-600',
     },
     {
       icon: Globe,
-      title: "Tools & Technologies",
-      skills: ["Git", "Docker", "AWS", "CI/CD", "Webpack"],
-      color: "from-orange-500 to-orange-600",
+      title: 'Tools & Technologies',
+      skills: ['Git', 'Docker', 'AWS', 'CI/CD', 'Webpack'],
+      color: 'from-orange-500 to-orange-600',
     },
-  ];
+  ]
 
   return (
     <section className="py-20 bg-gray-50">
@@ -50,7 +50,7 @@ const Skills = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {skillCategories.map((category, index) => {
-            const Icon = category.icon;
+            const Icon = category.icon
             return (
               <Card key={index} className="text-center">
                 <div
@@ -67,12 +67,12 @@ const Skills = () => {
                   ))}
                 </ul>
               </Card>
-            );
+            )
           })}
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Skills;
+export default Skills

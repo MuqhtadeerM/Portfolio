@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Menu, X, Home, User, Code, Mail, Sun, Moon } from 'lucide-react'
+import { Menu, X, Home, User, Code, Mail } from 'lucide-react'
 import useScrollPosition from '../../hooks/useScrollPosition'
+import ThemeToggle from './ThemeToggle'
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const [theme, setTheme] = useState('light')
   const scrollPosition = useScrollPosition()
   const location = useLocation()
 
@@ -18,107 +18,100 @@ const Header = () => {
 
   const isActive = (path) => location.pathname === path
 
-  // Persist theme on reload
   useEffect(() => {
-    document.documentElement.classList.toggle('dark', theme === 'dark')
-    localStorage.setItem('theme', theme)
-  }, [theme])
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') || 'light'
-    setTheme(savedTheme)
-  }, [])
-
-  const toggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light')
-  }
+    setIsOpen(false)
+  }, [location])
 
   return (
     <header
-      className={`fixed w-full top-0 z-50 transition-all duration-300 ${
-        scrollPosition > 20
-          ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-lg'
-          : 'bg-transparent'
-      }`}
+      className={`
+        fixed w-full top-0 z-50 transition-all duration-300
+        ${
+          scrollPosition > 20
+            ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl shadow-lg'
+            : 'bg-transparent'
+        }
+      `}
     >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <nav className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link
             to="/"
-            className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent"
+            className="text-2xl md:text-3xl font-bold gradient-text hover:opacity-80 transition-opacity"
           >
             Portfolio
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
-                className={`px-4 py-3 text-lg rounded-md font-medium transition-colors duration-200 hover:bg-gray-100 dark:hover:bg-gray-800 ${
-                  isActive(item.path)
-                    ? 'bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-400 font-semibold'
-                    : 'text-gray-700 dark:text-gray-200'
-                }`}
+                className={`
+                  text-gray-700 dark:text-gray-300 
+                  hover:text-blue-600 dark:hover:text-blue-400 
+                  transition-colors duration-200 font-medium relative group
+                  ${isActive(item.path) ? 'text-blue-600 dark:text-blue-400' : ''}
+                `}
               >
                 {item.name}
+                <span
+                  className={`
+                    absolute -bottom-1 left-0 h-0.5 
+                    bg-blue-600 dark:bg-blue-400 
+                    transition-all duration-300 
+                    ${isActive(item.path) ? 'w-full' : 'w-0 group-hover:w-full'}
+                  `}
+                ></span>
               </Link>
             ))}
-
-            {/* Theme Toggle Button */}
-            <button
-              onClick={toggleTheme}
-              className="p-3 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-              aria-label="Toggle theme"
-            >
-              {theme === 'light' ? <Moon size={22} /> : <Sun size={22} />}
-            </button>
+            <ThemeToggle />
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-3 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X size={26} /> : <Menu size={26} />}
-          </button>
+          <div className="md:hidden flex items-center gap-3">
+            <ThemeToggle />
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              aria-label="Toggle menu"
+            >
+              {isOpen ? (
+                <X size={24} className="text-gray-800 dark:text-gray-200" />
+              ) : (
+                <Menu size={24} className="text-gray-800 dark:text-gray-200" />
+              )}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden mt-4 py-4 bg-white dark:bg-gray-900 rounded-lg shadow-lg space-y-2">
+          <div className="md:hidden mt-4 py-4 bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 animate-slideUp">
             {navItems.map((item) => {
               const Icon = item.icon
               return (
                 <Link
                   key={item.path}
                   to={item.path}
-                  onClick={() => setIsOpen(false)}
-                  className={`flex items-center space-x-3 px-6 py-3 text-lg rounded-md transition-colors hover:bg-gray-50 dark:hover:bg-gray-800 ${
-                    isActive(item.path)
-                      ? 'bg-primary-50 dark:bg-primary-900 text-primary-600 dark:text-primary-400 font-semibold'
-                      : 'text-gray-700 dark:text-gray-200'
-                  }`}
+                  className={`
+                    flex items-center space-x-3 px-6 py-4 
+                    hover:bg-gray-50 dark:hover:bg-gray-700 
+                    transition-colors
+                    ${
+                      isActive(item.path)
+                        ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400'
+                        : 'text-gray-700 dark:text-gray-300'
+                    }
+                  `}
                 >
-                  <Icon size={22} />
+                  <Icon size={20} />
                   <span className="font-medium">{item.name}</span>
                 </Link>
               )
             })}
-
-            {/* Mobile Theme Toggle */}
-            <button
-              onClick={toggleTheme}
-              className="flex items-center space-x-3 mt-2 px-6 py-3 text-lg rounded-md hover:bg-gray-50 dark:hover:bg-gray-800 w-full transition-colors"
-            >
-              {theme === 'light' ? <Moon size={22} /> : <Sun size={22} />}
-              <span className="font-medium">
-                {theme === 'light' ? 'Dark Mode' : 'Light Mode'}
-              </span>
-            </button>
           </div>
         )}
       </nav>

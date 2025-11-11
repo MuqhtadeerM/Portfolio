@@ -45,7 +45,7 @@ export const PROJECTS = [
       'A stunning portfolio website with smooth animations, dark mode, and CMS integration for easy content updates.',
     icon: '💼',
     technologies: ['React', 'Gatsby', 'GraphQL', 'Contentful'],
-    category: 'web',
+    category: 'design',
     liveUrl: 'https://example.com',
     githubUrl: 'https://github.com',
   },
@@ -61,16 +61,15 @@ export const PROJECTS = [
   },
 ]
 
-export const NAVIGATION_ITEMS = [
-  { name: 'Home', path: '/' },
-  { name: 'About', path: '/about' },
-  { name: 'Projects', path: '/projects' },
-  { name: 'Contact', path: '/contact' },
-]
-
 export const SOCIAL_LINKS = {
   github: 'https://github.com/yourusername',
   linkedin: 'https://linkedin.com/in/yourusername',
   twitter: 'https://twitter.com/yourusername',
   email: 'mailto:your@email.com',
+}
+
+export const CONTACT_INFO = {
+  email: 'your@email.com',
+  phone: '+1 (234) 567-8900',
+  location: 'San Francisco, CA',
 }

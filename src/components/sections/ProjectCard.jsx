@@ -5,15 +5,19 @@ import Button from '../common/Button'
 
 const ProjectCard = ({ project }) => {
   return (
-    <Card>
+    <Card className="group">
       {/* Project Image/Icon */}
-      <div className="text-6xl mb-4 text-center">{project.icon}</div>
+      <div className="mb-4 text-6xl text-center transition-transform duration-300 transform group-hover:scale-110">
+        {project.icon}
+      </div>
 
       {/* Project Title */}
-      <h3 className="text-2xl font-bold mb-3 text-gray-900">{project.title}</h3>
+      <h3 className="mb-3 text-2xl font-bold text-gray-900 transition-colors duration-300 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400">
+        {project.title}
+      </h3>
 
       {/* Project Description */}
-      <p className="text-gray-600 mb-4 leading-relaxed">
+      <p className="mb-4 leading-relaxed text-gray-600 transition-colors duration-300 dark:text-gray-400">
         {project.description}
       </p>
 
@@ -22,7 +26,7 @@ const ProjectCard = ({ project }) => {
         {project.technologies.map((tech, index) => (
           <span
             key={index}
-            className="bg-gradient-to-r from-primary-100 to-secondary-100 text-primary-700 px-3 py-1 rounded-full text-sm font-medium"
+            className="px-3 py-1 text-sm font-medium text-blue-700 transition-colors duration-300 rounded-full bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 dark:text-blue-300"
           >
             {tech}
           </span>
@@ -35,7 +39,7 @@ const ProjectCard = ({ project }) => {
           variant="primary"
           href={project.liveUrl}
           icon={ExternalLink}
-          className="flex-1 text-sm py-2"
+          className="flex-1 py-2 text-sm"
         >
           Live Demo
         </Button>
@@ -43,7 +47,7 @@ const ProjectCard = ({ project }) => {
           variant="outline"
           href={project.githubUrl}
           icon={Github}
-          className="flex-1 text-sm py-2"
+          className="flex-1 py-2 text-sm"
         >
           Code
         </Button>

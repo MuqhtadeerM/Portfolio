@@ -13,14 +13,14 @@ const Projects = () => {
       : PROJECTS.filter((project) => project.category === filter)
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-24 pb-12">
-      <div className="container-custom">
+    <div className="min-h-screen py-20 transition-colors duration-300 bg-gray-50 dark:bg-gray-900">
+      <div className="px-6 mx-auto max-w-7xl sm:px-8 lg:px-12">
         {/* Header */}
-        <div className="text-center mb-12 animate-fade-in">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
+        <div className="mb-12 text-center animate-fadeIn">
+          <h1 className="mb-6 text-4xl font-bold md:text-5xl lg:text-6xl gradient-text">
             My Projects
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="max-w-3xl mx-auto text-xl text-gray-600 transition-colors duration-300 dark:text-gray-400">
             A collection of projects I've worked on, showcasing my skills and
             experience
           </p>
@@ -32,11 +32,14 @@ const Projects = () => {
             <button
               key={category}
               onClick={() => setFilter(category)}
-              className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 ${
-                filter === category
-                  ? 'bg-gradient-to-r from-primary-600 to-secondary-600 text-white shadow-lg'
-                  : 'bg-white text-gray-700 hover:shadow-md'
-              }`}
+              className={`
+                px-6 py-3 rounded-full font-semibold transition-all duration-300
+                ${
+                  filter === category
+                    ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg scale-105'
+                    : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:shadow-md border border-gray-200 dark:border-gray-700'
+                }
+              `}
             >
               {category.charAt(0).toUpperCase() + category.slice(1)}
             </button>
@@ -44,9 +47,13 @@ const Projects = () => {
         </div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {filteredProjects.map((project, index) => (
-            <div key={index} className="animate-slide-up">
+            <div
+              key={index}
+              className="animate-slideUp"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
               <ProjectCard project={project} />
             </div>
           ))}
@@ -54,8 +61,8 @@ const Projects = () => {
 
         {/* Empty State */}
         {filteredProjects.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-gray-500 text-lg">
+          <div className="py-12 text-center">
+            <p className="text-lg text-gray-500 transition-colors duration-300 dark:text-gray-400">
               No projects found in this category.
             </p>
           </div>

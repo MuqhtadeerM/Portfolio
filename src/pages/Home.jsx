@@ -1,3 +1,4 @@
+import React from 'react'
 import Hero from '../components/sections/Hero'
 import Skills from '../components/sections/Skills'
 

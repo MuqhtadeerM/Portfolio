@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Mail, Phone, MapPin, Send } from 'lucide-react'
+import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react'
 import Card from '../components/common/Card'
 import Button from '../components/common/Button'
 
@@ -24,10 +24,7 @@ const Contact = () => {
     e.preventDefault()
 
     // Simulate form submission
-    setStatus({
-      type: 'success',
-      message: 'Message sent successfully! (Demo)',
-    })
+    setStatus({ type: 'success', message: 'Message sent successfully!' })
 
     // Reset form
     setTimeout(() => {
@@ -46,52 +43,56 @@ const Contact = () => {
     {
       icon: Phone,
       title: 'Phone',
-      value: '+1 234 567 8900',
+      value: '+1 (234) 567-8900',
       href: 'tel:+12345678900',
     },
     { icon: MapPin, title: 'Location', value: 'San Francisco, CA', href: null },
   ]
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-24 pb-12">
-      <div className="container-custom">
+    <div className="min-h-screen py-20 transition-colors duration-300 bg-gray-50 dark:bg-gray-900">
+      <div className="px-6 mx-auto max-w-7xl sm:px-8 lg:px-12">
         {/* Header */}
-        <div className="text-center mb-16 animate-fade-in">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
+        <div className="mb-16 text-center animate-fadeIn">
+          <h1 className="mb-6 text-4xl font-bold md:text-5xl lg:text-6xl gradient-text">
             Get In Touch
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="max-w-3xl mx-auto text-xl text-gray-600 transition-colors duration-300 dark:text-gray-400">
             Have a project in mind? Let's work together to create something
             amazing
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid max-w-6xl gap-8 mx-auto md:grid-cols-2">
           {/* Contact Information */}
-          <div className="space-y-6 animate-slide-up">
+          <div className="space-y-6 animate-slideUp">
             <Card>
-              <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
+              <h2 className="mb-6 text-2xl font-bold text-gray-900 transition-colors duration-300 dark:text-white">
+                Contact Information
+              </h2>
               <div className="space-y-4">
                 {contactInfo.map((info, index) => {
                   const Icon = info.icon
                   return (
-                    <div key={index} className="flex items-start gap-4">
-                      <div className="bg-gradient-to-r from-primary-500 to-secondary-500 p-3 rounded-lg">
+                    <div key={index} className="flex items-start gap-4 group">
+                      <div className="p-3 transition-transform duration-300 transform rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 group-hover:scale-110">
                         <Icon size={24} className="text-white" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-gray-900">
+                        <h3 className="font-semibold text-gray-900 transition-colors duration-300 dark:text-white">
                           {info.title}
                         </h3>
                         {info.href ? (
                           <a
                             href={info.href}
-                            className="text-gray-600 hover:text-primary-600 transition-colors"
+                            className="text-gray-600 transition-colors dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400"
                           >
                             {info.value}
                           </a>
                         ) : (
-                          <p className="text-gray-600">{info.value}</p>
+                          <p className="text-gray-600 transition-colors duration-300 dark:text-gray-400">
+                            {info.value}
+                          </p>
                         )}
                       </div>
                     </div>
@@ -101,7 +102,9 @@ const Contact = () => {
             </Card>
 
             <Card>
-              <h2 className="text-2xl font-bold mb-4">Why Work With Me?</h2>
+              <h2 className="mb-4 text-2xl font-bold text-gray-900 transition-colors duration-300 dark:text-white">
+                Why Work With Me?
+              </h2>
               <ul className="space-y-3">
                 {[
                   'Fast response time',
@@ -110,9 +113,15 @@ const Contact = () => {
                   'On-time delivery',
                   'Post-launch support',
                 ].map((item, index) => (
-                  <li key={index} className="flex items-center gap-2">
-                    <span className="text-primary-600 font-bold">✓</span>
-                    <span className="text-gray-600">{item}</span>
+                  <li
+                    key={index}
+                    className="flex items-center gap-2 text-gray-600 transition-colors duration-300 dark:text-gray-400"
+                  >
+                    <CheckCircle
+                      size={20}
+                      className="flex-shrink-0 text-green-500"
+                    />
+                    <span>{item}</span>
                   </li>
                 ))}
               </ul>
@@ -120,12 +129,14 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <Card className="animate-slide-up">
-            <h2 className="text-2xl font-bold mb-6">Send a Message</h2>
+          <Card className="animate-slideUp">
+            <h2 className="mb-6 text-2xl font-bold text-gray-900 transition-colors duration-300 dark:text-white">
+              Send a Message
+            </h2>
 
-            <div className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-gray-700 font-semibold mb-2">
+                <label className="block mb-2 font-semibold text-gray-700 transition-colors duration-300 dark:text-gray-300">
                   Name *
                 </label>
                 <input
@@ -134,13 +145,13 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 text-gray-900 transition-all bg-white border border-gray-300 rounded-lg dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
                   placeholder="Your name"
                 />
               </div>
 
               <div>
-                <label className="block text-gray-700 font-semibold mb-2">
+                <label className="block mb-2 font-semibold text-gray-700 transition-colors duration-300 dark:text-gray-300">
                   Email *
                 </label>
                 <input
@@ -149,13 +160,13 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 text-gray-900 transition-all bg-white border border-gray-300 rounded-lg dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
                   placeholder="your@email.com"
                 />
               </div>
 
               <div>
-                <label className="block text-gray-700 font-semibold mb-2">
+                <label className="block mb-2 font-semibold text-gray-700 transition-colors duration-300 dark:text-gray-300">
                   Subject *
                 </label>
                 <input
@@ -164,13 +175,13 @@ const Contact = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 text-gray-900 transition-all bg-white border border-gray-300 rounded-lg dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
                   placeholder="Project inquiry"
                 />
               </div>
 
               <div>
-                <label className="block text-gray-700 font-semibold mb-2">
+                <label className="block mb-2 font-semibold text-gray-700 transition-colors duration-300 dark:text-gray-300">
                   Message *
                 </label>
                 <textarea
@@ -179,17 +190,17 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows="5"
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all resize-none"
+                  className="w-full px-4 py-3 text-gray-900 transition-all bg-white border border-gray-300 rounded-lg resize-none dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
                   placeholder="Tell me about your project..."
                 />
               </div>
 
               {status.message && (
                 <div
-                  className={`p-4 rounded-lg ${
+                  className={`p-4 rounded-lg transition-colors duration-300 ${
                     status.type === 'success'
-                      ? 'bg-green-100 text-green-700'
-                      : 'bg-red-100 text-red-700'
+                      ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300'
+                      : 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300'
                   }`}
                 >
                   {status.message}
@@ -197,14 +208,14 @@ const Contact = () => {
               )}
 
               <Button
+                type="submit"
                 variant="primary"
-                onClick={handleSubmit}
                 icon={Send}
                 className="w-full"
               >
                 Send Message
               </Button>
-            </div>
+            </form>
           </Card>
         </div>
       </div>

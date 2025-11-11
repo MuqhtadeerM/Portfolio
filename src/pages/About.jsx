@@ -10,7 +10,7 @@ const About = () => {
       company: 'Tech Company Inc.',
       period: '2022 - Present',
       description:
-        'Leading frontend development team and building scalable web applications.',
+        'Leading frontend development team and building scalable web applications using React and modern JavaScript.',
     },
     {
       icon: Briefcase,
@@ -18,39 +18,40 @@ const About = () => {
       company: 'Startup Solutions',
       period: '2020 - 2022',
       description:
-        'Developed full-stack applications using React, Node.js, and MongoDB.',
+        'Developed full-stack applications using React, Node.js, and MongoDB with focus on performance and UX.',
     },
     {
       icon: GraduationCap,
       title: 'Computer Science Degree',
       company: 'University Name',
       period: '2016 - 2020',
-      description: 'Bachelor of Science in Computer Science with honors.',
+      description:
+        'Bachelor of Science in Computer Science with honors. Specialized in web development and software engineering.',
     },
   ]
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-24 pb-12">
-      <div className="container-custom">
+    <div className="min-h-screen py-20 transition-colors duration-300 bg-gray-50 dark:bg-gray-900">
+      <div className="px-6 mx-auto max-w-7xl sm:px-8 lg:px-12">
         {/* Header */}
-        <div className="text-center mb-16 animate-fade-in">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
+        <div className="mb-16 text-center animate-fadeIn">
+          <h1 className="mb-6 text-4xl font-bold md:text-5xl lg:text-6xl gradient-text">
             About Me
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="max-w-3xl mx-auto text-xl text-gray-600 transition-colors duration-300 dark:text-gray-400">
             Passionate developer dedicated to creating exceptional digital
             experiences
           </p>
         </div>
 
         {/* About Content */}
-        <div className="grid md:grid-cols-2 gap-8 mb-16 max-w-6xl mx-auto">
-          <Card className="animate-slide-up">
-            <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-              <Award className="text-primary-600" size={32} />
+        <div className="grid max-w-6xl gap-8 mx-auto mb-16 md:grid-cols-2">
+          <Card className="animate-slideUp">
+            <h2 className="flex items-center gap-3 mb-6 text-3xl font-bold text-gray-900 transition-colors duration-300 dark:text-white">
+              <Award className="text-blue-600 dark:text-blue-400" size={32} />
               My Story
             </h2>
-            <div className="space-y-4 text-gray-600 leading-relaxed">
+            <div className="space-y-4 leading-relaxed text-gray-600 transition-colors duration-300 dark:text-gray-400">
               <p>
                 I'm a passionate full-stack developer with over 5 years of
                 experience building modern web applications. My journey in tech
@@ -73,8 +74,10 @@ const About = () => {
             </div>
           </Card>
 
-          <Card className="animate-slide-up">
-            <h2 className="text-3xl font-bold mb-6">What I Do</h2>
+          <Card className="animate-slideUp">
+            <h2 className="mb-6 text-3xl font-bold text-gray-900 transition-colors duration-300 dark:text-white">
+              What I Do
+            </h2>
             <ul className="space-y-4">
               {[
                 'Build responsive web applications with React and modern JavaScript',
@@ -85,8 +88,12 @@ const About = () => {
                 'Mentor junior developers and conduct code reviews',
               ].map((item, index) => (
                 <li key={index} className="flex items-start gap-3">
-                  <span className="text-primary-600 font-bold text-xl">•</span>
-                  <span className="text-gray-600">{item}</span>
+                  <span className="text-xl font-bold text-blue-600 dark:text-blue-400">
+                    •
+                  </span>
+                  <span className="text-gray-600 transition-colors duration-300 dark:text-gray-400">
+                    {item}
+                  </span>
                 </li>
               ))}
             </ul>
@@ -95,27 +102,35 @@ const About = () => {
 
         {/* Experience Timeline */}
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+          <h2 className="mb-12 text-3xl font-bold text-center text-gray-900 transition-colors duration-300 md:text-4xl dark:text-white">
             Experience & Education
           </h2>
           <div className="space-y-6">
             {experiences.map((exp, index) => {
               const Icon = exp.icon
               return (
-                <Card key={index} className="animate-slide-up">
+                <Card
+                  key={index}
+                  className="animate-slideUp"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
                   <div className="flex items-start gap-4">
-                    <div className="bg-gradient-to-r from-primary-500 to-secondary-500 p-3 rounded-lg">
+                    <div className="flex-shrink-0 p-3 rounded-lg bg-gradient-to-r from-blue-500 to-purple-500">
                       <Icon size={24} className="text-white" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold text-gray-900">
+                      <h3 className="text-xl font-bold text-gray-900 transition-colors duration-300 dark:text-white">
                         {exp.title}
                       </h3>
-                      <p className="text-primary-600 font-semibold">
+                      <p className="font-semibold text-blue-600 transition-colors duration-300 dark:text-blue-400">
                         {exp.company}
                       </p>
-                      <p className="text-gray-500 text-sm mb-2">{exp.period}</p>
-                      <p className="text-gray-600">{exp.description}</p>
+                      <p className="mb-2 text-sm text-gray-500 transition-colors duration-300 dark:text-gray-500">
+                        {exp.period}
+                      </p>
+                      <p className="text-gray-600 transition-colors duration-300 dark:text-gray-400">
+                        {exp.description}
+                      </p>
                     </div>
                   </div>
                 </Card>

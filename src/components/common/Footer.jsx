@@ -1,5 +1,6 @@
 import React from 'react'
-import { Github, Linkedin, Twitter, Mail, Heart } from 'lucide-react'
+import { Github, Linkedin, Twitter, Mail, Heart, ArrowUp } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import SocialButton from './SocialButton'
 
 const Footer = () => {
@@ -12,60 +13,111 @@ const Footer = () => {
     { icon: Mail, href: 'mailto:your@email.com', label: 'Email' },
   ]
 
+  const quickLinks = [
+    { name: 'Home', path: '/' },
+    { name: 'About', path: '/about' },
+    { name: 'Projects', path: '/projects' },
+    { name: 'Contact', path: '/contact' },
+  ]
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   return (
-    <footer className="bg-gray-900 text-white py-12">
-      <div className="container-custom">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-          {/* Brand */}
-          <div>
-            <h3 className="text-2xl font-bold bg-gradient-to-r from-primary-400 to-secondary-400 bg-clip-text text-transparent mb-4">
+    <footer className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 mt-20">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-12">
+        {/* Main Footer Content */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          {/* Brand Section */}
+          <div className="lg:col-span-2">
+            <h3 className="text-2xl md:text-3xl font-bold gradient-text mb-4">
               Portfolio
             </h3>
-            <p className="text-gray-400">
+            <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-md">
               Creating amazing digital experiences with modern web technologies.
+              Let's build something great together.
             </p>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-2">
-              {['Home', 'About', 'Projects', 'Contact'].map((link) => (
-                <li key={link}>
-                  <a
-                    href={`/${link.toLowerCase()}`}
-                    className="text-gray-400 hover:text-white transition-colors"
-                  >
-                    {link}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Social Links */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Connect</h4>
-            <div className="flex space-x-4">
+            <div className="flex items-center gap-3">
               {socialLinks.map((social) => (
                 <SocialButton
                   key={social.label}
                   icon={social.icon}
                   href={social.href}
                   label={social.label}
-                  variant="dark"
                 />
               ))}
             </div>
           </div>
+
+          {/* Quick Links */}
+          <div>
+            <h4 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">
+              Quick Links
+            </h4>
+            <ul className="space-y-3">
+              {quickLinks.map((link) => (
+                <li key={link.path}>
+                  <Link
+                    to={link.path}
+                    className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h4 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">
+              Get In Touch
+            </h4>
+            <ul className="space-y-3 text-gray-600 dark:text-gray-400 text-sm">
+              <li>
+                <a
+                  href="mailto:your@email.com"
+                  className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                >
+                  your@email.com
+                </a>
+              </li>
+              <li>
+                <a
+                  href="tel:+1234567890"
+                  className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                >
+                  +1 (234) 567-8900
+                </a>
+              </li>
+              <li>San Francisco, CA</li>
+            </ul>
+          </div>
         </div>
 
-        {/* Copyright */}
-        <div className="border-t border-gray-800 pt-8 text-center">
-          <p className="text-gray-400 flex items-center justify-center">
-            © {currentYear} Portfolio. Made with{' '}
-            <Heart size={16} className="mx-1 text-red-500" /> by Your Name
-          </p>
+        {/* Divider */}
+        <div className="border-t border-gray-200 dark:border-gray-800 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            {/* Copyright */}
+            <p className="text-gray-600 dark:text-gray-400 text-sm flex items-center gap-2">
+              © {currentYear} Portfolio. Made with
+              <Heart size={16} className="text-red-500 animate-pulse" />
+              by Your Name
+            </p>
+
+            {/* Back to Top */}
+            <button
+              onClick={scrollToTop}
+              className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors group"
+            >
+              <span className="text-sm font-medium">Back to top</span>
+              <ArrowUp
+                size={16}
+                className="group-hover:-translate-y-1 transition-transform"
+              />
+            </button>
+          </div>
         </div>
       </div>
     </footer>
